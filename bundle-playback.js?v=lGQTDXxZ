@@ -1,0 +1,87 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-3.0
+( () => {
+    "use strict";
+    var t, e, n = {
+        createElementNS: document.createElementNS
+    };
+    var s = !0;
+    function o(t) {
+        s = t
+    }
+    function i(t) {
+        try {
+            o(!1),
+            t()
+        } finally {
+            o(!0)
+        }
+    }
+    function a(t) {
+        !function(t, e, n) {
+            if (n) {
+                var s = new Date;
+                s.setTime(s.getTime() + 24 * n * 60 * 60 * 1e3);
+                var o = "; expires=" + s.toGMTString()
+            } else
+                o = "";
+            document.cookie = t + "=" + e + o + "; path=/"
+        }(t, "", -1)
+    }
+    if (void 0 !== window.XMLHttpRequest) {
+        var r = class extends XMLHttpRequest {
+        }
+        ;
+        Object.defineProperty(r.prototype, "responseURL", Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, "responseURL"))
+    }
+    function l(t, e, n, s, o) {
+        var i;
+        if ((i = window.XMLHttpRequest ? new r : new ActiveXObject("Microsoft.XMLHTTP")).onreadystatechange = function() {
+            4 == this.readyState && n(i)
+        }
+        ,
+        i.open(t, e, !0),
+        s)
+            for (var a in s)
+                s.hasOwnProperty(a) && i.setRequestHeader(a, s[a]);
+        i.withCredentials = !0,
+        i.send(o)
+    }
+    function c(t) {
+        return void 0 !== t && t && t.constructor === Array
+    }
+    function h(t, e) {
+        const n = window[`HTML${t}Element`];
+        if (void 0 !== n) {
+            const t = Object.getOwnPropertyDescriptor(n.prototype, e);
+            void 0 !== t && Object.defineProperty(n.prototype, `_wm_${e}`, t)
+        }
+    }
+    function d(t) {
+        let e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "src";
+        const n = `_wm_${e}`;
+        return n in t.__proto__ ? t[n] : t[e]
+    }
+    h("Image", "src"),
+    h("Media", "src"),
+    h("Embed", "src"),
+    h("IFrame", "src"),
+    h("Script", "src"),
+    h("Link", "href"),
+    h("Anchor", "href");
+    const u = Element.prototype.setAttribute;
+    function p(t, e, n) {
+        u.call(t, e, n)
+    }
+    var m = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      , f = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      , g = {
+        Y: function(t) {
+            return t.getUTCFullYear()
+        },
+        m: function(t) {
+            return t.getUTCMonth() + 1
+        },
+        b: function(t) {
+            return f[t.getUTCMonth()]
+        },
+        B: function(t) {
